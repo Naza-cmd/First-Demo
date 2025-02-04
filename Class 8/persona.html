@@ -1,0 +1,135 @@
+
+<!-- This is the HTML document structure declaration -->
+<!DOCTYPE html>
+<!-- Opens the HTML document with language set to English -->
+<html lang="en">
+<!-- Contains informtion about the title of the UX Persona(font, color,style etc.) -->
+<head>
+    <!-- Defines character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Ensures responsive behavior on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the title of the web page in the browser tab -->
+    <title>UX Persona for Ocean Zones</title>
+<!-- Contains informtion about css code that deals withtthe background of the screen and personancard, padding and font) -->
+    <style>
+        /* Sets font family to Arial and centers content vertically and horizontally */
+        body {
+        /*This contains information about what font will be used on Persona card */
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /*This makes an element become a flex container, which helps its child element arrange easier */
+            display:flex;
+            /* This makes the Persona card be center aligned*/
+            justify-content:center;
+            /* This makes the information in the Persona card be center aligned*/
+            align-items: center;
+            /* This sets the height of the screen*/
+            height: 100vh;
+            /* This makes the color of the background black*/
+            background-color: rgb(199, 199, 199);
+            /*This closes the body */
+        }
+
+        /* Styles the persona card with padding, rounded corners, and a shadow effect */
+        .persona-card {
+            /* This sets the persona card color to white*/
+            background: white;
+            /* This determines the size of the persona card, which is 50px*/
+            padding: 50px;
+            /* This determines how rounded the corners of the card will be*/
+            border-radius: 10px;
+            /* This determines the shadow behind the persona card, The first is Horizontal offset , thn vertical , then blur radius, then the color of the shadow, with 0 as hue and 16% of whitenes and 81% as blackness and opacity value of 0.1*/
+            box-shadow: 5px 10px 6px hwb(0 16% 81% / 0.1);
+            /* This sets the text alignment*/
+            text-align: center;
+            /* This sets the Width of the persona card*/
+            width: 300px;
+        }
+
+        /* Removes bullet points from the list */
+        ul {
+            list-style-type: none;
+            /* This setsthe pading to 0 on all sides*/
+            padding: 0;
+        }
+        /*This closes the style tag*/
+    </style>
+    <!--This closes the head tag-->
+</head>
+ <!--This opens the body tag -->
+
+<body>
+
+    <!-- This div contains the persona card that displays user information -->
+    <div class="persona-card">
+        <!-- Displays the persona name dynamically using JavaScript -->
+        <h2 id="persona-name"> hi </h2>
+        <!-- Displays the persona's age dynamically -->
+        <p><strong>Age:</strong> <span id="persona-age">[Age]</span></p>
+        <!-- Displays a list of skills -->
+        <p><strong>Skills:</strong></p>
+        <!--Unordered list of persona skills -->
+        <ul id="persona-skills">
+            <!-- JavaScript will insert skills here -->
+        </ul>
+        <!-- Closes div tags -->
+    </div>
+        <!--Open script tag-->
+    <script>
+        // Creates an object representing a UX Researcher persona
+        let userPersona = {
+            // Makes a name property to put in the Persona name
+            name: "Johnny, The Third Grader",
+            //Makes a age property to put in the Persona's age
+            age: 7,
+            // Array of the persona's skills
+            skills: ["Drawing", "Comprehensive Reading", "Essay Writing"],
+
+            // Function to introduce the persona with their name and skills
+            introduce: function() {
+                // this line will return the line "I'm "persona name" and I specialize in "skills".based on input in lines 82 and 86"
+                return `I'm ${this.name} and I specialize in ${this.skills.join(", ")}.`;
+            }
+        };
+
+        // Creates another persona object for comparison
+        let userPersona2 = {
+            // Makes a name property to put in the Persona 2's name
+            name: "Claire,Sixth grader",
+            // Makes a age property to put in the Persona 2's age
+            age: 11,
+             // Array of the persona's skills
+            skills: ["Effective Communication", "Problem Solving"],
+
+            // Function to introduce the second persona
+            introduce: function() {
+                // this line will return the line "I'm "persona name" and I specialize in "skills".based on input in lines 98 and 100"
+                return `I'm ${this.name} and I specialize in ${this.skills.join(", ")}.`;
+            }
+        };
+
+        // Updates the HTML content to display the first persona’s name
+        document.getElementById("persona-name").innerText = userPersona.name;
+         // Updates the HTML content to display the first persona’s name
+        document.getElementById("persona-age").innerText = userPersona.age;
+
+        // Selects the unordered list element for skills
+        let skillList = document.getElementById("persona-skills");
+
+        // Loops through the persona's skills and adds them as list items
+        for (let i = 0; i < userPersona.skills.length; i++) {
+            let listItem = document.createElement("li"); // Creates a new list item
+            listItem.textContent = `- ${userPersona.skills[i]}`; // Sets the text content
+            skillList.appendChild(listItem); // Appends the list item to the skills list
+        }
+
+        // Logs the introduction of  persona 1 to the console
+        console.log(userPersona.introduce());
+         // Logs the introduction of  persona 2 to the console
+        console.log(userPersona2.introduce());
+        // closes script tag
+    </script>
+<!--Closes body tag-->
+</body>
+<!--Closes html tag-->
+</html>
